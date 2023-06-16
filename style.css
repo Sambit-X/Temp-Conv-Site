@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #D7C0AE;
+}
+h1{
+    text-align: center;
+    padding: 50px 0;
+}
+#container{
+    text-align: center;
+    background-color: antiquewhite;
+    padding: 50px;
+}
+.input{
+    align-items: center;
+    display: inline-block;
+    padding: 50px;
+}
+.inp{
+    padding: 5px 10px;
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+}
+label{
+    font-size: 20px;
+}
+.input h1{
+   background-color: blue;
+}
+#unit1, #unit2{
+    cursor: pointer;
+}
+.copyright{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 25px;
+    background: #262626;
+}
+p{
+    color: white;
+}
+@media only screen and (max-width: 500px){
+    #container{
+        padding:10px
+    }
+    .copyright{
+        padding: 25px 0;;
+    }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <!-- --------------Temperature Conversion----------------- -->
+    <div id="container">
+        <div class="input">
+            <label>Initial Temperature</label><br>
+            <input type="number" value="0" id="temperature1" class="inp"><br>
+            <select id="unit1" class="unit-select">
+                <option selected="selected" value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+        </div>
+        <div class="input">
+            <label>Converted Temperature</label><br>
+            <input type="number" value="32" id="temperature2" class="inp" readonly><br>
+            <select id="unit2" class="unit-select">
+                <option value="celsius">Celsius (°C)</option>
+                <option selected="selected" value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2023 Sambit Kumar Mondal #keeplearning #keepeating</p>
+    </div>
+    <script>
+        var temperature1Input = document.getElementById("temperature1");
+        var unit1Select = document.getElementById("unit1");
+        var temperature2Input = document.getElementById("temperature2");
+        var unit2Select = document.getElementById("unit2");
+
+        temperature1Input.addEventListener('input', convertTemperature);
+        unit1Select.addEventListener('change', convertTemperature);
+        temperature2Input.addEventListener('input', convertTemperature);
+        unit2Select.addEventListener('change', convertTemperature);
+
+        function convertTemperature() {
+            var temperature1 = parseFloat(temperature1Input.value);
+            var unit1 = unit1Select.value;
+            var temperature2 = parseFloat(temperature2Input.value);
+            var unit2 = unit2Select.value;
+
+            if (unit1 === 'celsius') {
+                if (unit2 === 'celsius') {
+                    temperature2Input.value = temperature1.toFixed(2);
+                } 
+                else if (unit2 === 'fahrenheit') {
+                    temperature2Input.value = ((temperature1 * 9/5) + 32).toFixed(2);
+                } 
+                else if (unit2 === 'kelvin') {
+                    temperature2Input.value = (temperature1 + 273.15).toFixed(2);
+                }
+            } else if (unit1 === 'fahrenheit') {
+                if (unit2 === 'celsius') {
+                    temperature2Input.value = ((temperature1 - 32) * 5/9).toFixed(2);
+                } 
+                else if (unit2 === 'fahrenheit') {
+                    temperature2Input.value = temperature1.toFixed(2);
+                } 
+                else if (unit2 === 'kelvin') {
+                    temperature2Input.value = ((temperature1 + 459.67) * 5/9).toFixed(2);
+                }
+            } else if (unit1 === 'kelvin') {
+                if (unit2 === 'celsius') {
+                    temperature2Input.value = (temperature1 - 273.15).toFixed(2);
+                } 
+                else if (unit2 === 'fahrenheit') {
+                    temperature2Input.value = ((temperature1 * 9/5) - 459.67).toFixed(2);
+                } 
+                else if (unit2 === 'kelvin') {
+                    temperature2Input.value = temperature1.toFixed(2);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
